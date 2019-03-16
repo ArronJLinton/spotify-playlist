@@ -57,65 +57,15 @@ spotify.clientCredentialsGrant()
 
 app.get("/:id", (req, res) => {
  
-
-  var getArtistNames = function(artist) {
-    return artist.name;
-  };
-
-  let songName;
-
-  // console.log("REQ.PARAMS: ", req.params);
-  if (songName === undefined) {
-    songName = "What's my age again";
-  }
-
-  
 // sample -> 5ieJqeLJjjI8iJWaxeBLuK
-  let playlistId;
-  
-  req.params.id ? playlistId = req.params.id : playlistId = "5ieJqeLJjjI8iJWaxeBLuK"
-  
+  let playlistId = req.params.id
+
   spotify.getPlaylist(playlistId)
   .then(function(data) {
-
-    // var tracks = data.body.tracks.items;
-    // for (let i = 0; i < tracks.length; i++) {
-    //     const track = tracks[i];
-    //     console.log("TRACK DATA: ", track);
-    //   }
-
       res.json(data.body.tracks.items)
-    // console.log('Some information about this playlist', data.body.tracks.items);
   }, function(err) {
     console.log('Something went wrong!', err);
   });
-  
-  // axios.get("https://api.spotify.com/v1/playlists/6rqhFgbbKwnb9MLmUQDhG6", {
-  //   "grant_type":    "authorization_code",
-  //   "code":          code,
-  //   "redirect_uri":  myurl,
-  //   "client_secret": mysecret,
-  //   "client_id":     myid,
-  // }).then((results) => {
-  //     // if (err) {
-  //     //   console.log("Error occurred: " + err);
-  //     //   return;
-  //     // }
-  //     console.log("DATA: ", results);
-  //   //   var songs = data.tracks.items;
-
-  //   //   for (var i = 0; i < songs.length; i++) {
-  //   //     console.log(i);
-  //   //     console.log("artist(s): " + songs[i].artists.map(getArtistNames));
-  //   //     console.log("song name: " + songs[i].name);
-  //   //     console.log("preview song: " + songs[i].preview_url);
-  //   //     console.log("album: " + songs[i].album.name);
-  //   //     console.log("-----------------------------------");
-  //   //   }
-  //   // }
-  // }).catch((err) => {
-  //   console.log(err)
-  // })
 
 })
 
