@@ -43,7 +43,7 @@ app.get('/', function(req, res) {
   res.redirect('https://accounts.spotify.com/authorize' +
     '?response_type=code' +
     '&client_id=0624a1c68afc4283863103888b6464c5&scope=' + encodeURIComponent(scopes) +
-    '&redirect_uri=https://spotify-jams.herokuapp.com');
+    '&redirect_uri=https://spotify-jams.herokuapp.com/spotify');
   });
 
 app.get("/spotify", (req, res) => {
