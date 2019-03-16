@@ -23,7 +23,8 @@ var fs = require("fs");
 var SpotifyApi = require('spotify-web-api-node');
 var spotify = new SpotifyApi({
   clientId: '0624a1c68afc4283863103888b6464c5',
-  clientSecret: 'fe4d4619ed16422ba113b799eb1ad2ba'
+  clientSecret: 'fe4d4619ed16422ba113b799eb1ad2ba',
+  redirectUri: 'http://spotify-jams.herokuapp.com/'
 });
 var express = require("express");
 
@@ -36,17 +37,17 @@ const PORT = process.env.PORT || 3000;
 // app.use(cors())
 // app.use(express.urlencoded({ extended: true }));
 // app.use(express.json());
-app.get('/', function(req, res) {
+// app.get('/', function(req, res) {
   
-  var scopes = 'user-read-private user-read-email';
-  const redirect_uri = "https://git.heroku.com/spotify-jams.git"
-  res.redirect('https://accounts.spotify.com/authorize' +
-    '?response_type=code' +
-    '&client_id=0624a1c68afc4283863103888b6464c5&scope=' + encodeURIComponent(scopes) +
-    '&redirect_uri=https://spotify-jams.herokuapp.com/spotify');
-  });
+//   var scopes = 'user-read-private user-read-email';
+//   const redirect_uri = "https://git.heroku.com/spotify-jams.git"
+//   res.redirect('https://accounts.spotify.com/authorize' +
+//     '?response_type=code' +
+//     '&client_id=0624a1c68afc4283863103888b6464c5&scope=' + encodeURIComponent(scopes) +
+//     '&redirect_uri=https://spotify-jams.herokuapp.com/spotify');
+//   });
 
-app.get("/spotify", (req, res) => {
+app.get("/", (req, res) => {
  
 
   var getArtistNames = function(artist) {
