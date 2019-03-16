@@ -62,7 +62,7 @@ app.get("/:id", (req, res) => {
 
   spotify.getPlaylist(playlistId)
   .then(function(data) {
-      res.json(data.body.tracks.items)
+      res.json(data.body.tracks)
   }, function(err) {
     console.log('Something went wrong!', err);
   });
