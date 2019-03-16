@@ -55,7 +55,7 @@ spotify.clientCredentialsGrant()
     console.log('Something went wrong when retrieving an access token', err.message);
   });
 
-app.get("/", (req, res) => {
+app.get("/:id", (req, res) => {
  
 
   var getArtistNames = function(artist) {
@@ -69,10 +69,20 @@ app.get("/", (req, res) => {
     songName = "What's my age again";
   }
 
-  spotify.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE')
+  
+// sample -> 5ieJqeLJjjI8iJWaxeBLuK
+  spotify.getPlaylist(req.params.id)
   .then(function(data) {
-    console.log('Some information about this playlist', data.body);
-  }).catch(function(err) {
+
+    // var tracks = data.body.tracks.items;
+    // for (let i = 0; i < tracks.length; i++) {
+    //     const track = tracks[i];
+    //     console.log("TRACK DATA: ", track);
+    //   }
+
+      res.json(data.body.tracks.items)
+    // console.log('Some information about this playlist', data.body.tracks.items);
+  }, function(err) {
     console.log('Something went wrong!', err);
   });
   
