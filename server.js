@@ -71,7 +71,11 @@ app.get("/:id", (req, res) => {
 
   
 // sample -> 5ieJqeLJjjI8iJWaxeBLuK
-  spotify.getPlaylist(req.params.id)
+  let playlistId;
+  
+  req.params.id ? playlistId = req.params.id : playlistId = "5ieJqeLJjjI8iJWaxeBLuK"
+  
+  spotify.getPlaylist(playlistId)
   .then(function(data) {
 
     // var tracks = data.body.tracks.items;
