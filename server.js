@@ -39,11 +39,11 @@ const PORT = process.env.PORT || 3000;
 app.get('/', function(req, res) {
   
   var scopes = 'user-read-private user-read-email';
-  const redirect_uri = "https://localhost:3000/spotify"
+  const redirect_uri = "https://git.heroku.com/spotify-jams.git"
   res.redirect('https://accounts.spotify.com/authorize' +
     '?response_type=code' +
     '&client_id=0624a1c68afc4283863103888b6464c5&scope=' + encodeURIComponent(scopes) +
-    '&redirect_uri=https://localhost:3000/spotify');
+    '&redirect_uri=https://git.heroku.com/spotify-jams.git');
   });
 
 app.get("/spotify", (req, res) => {
