@@ -55,14 +55,16 @@ spotify.clientCredentialsGrant()
     console.log('Something went wrong when retrieving an access token', err.message);
   });
 
-app.get("/:id", (req, res) => {
+app.get("/:playlist", (req, res) => {
  
 // sample -> 5ieJqeLJjjI8iJWaxeBLuK
-  let playlistId = req.params.id
+  let playlist = req.params.playlist
+  console.log("FETCHING MEDIA DATA")
 
-  spotify.getPlaylist(playlistId)
+spotify.searchPlaylists(playlist)
   .then(function(data) {
-      res.json(data.body.tracks)
+      console.log("RETURNING MEDIA DATA")
+      res.json(data)
   }, function(err) {
     console.log('Something went wrong!', err);
   });
