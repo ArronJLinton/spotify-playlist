@@ -33,24 +33,24 @@ spotify.clientCredentialsGrant()
   });
 
 
-app.get("/:playlist", (req, res) => {
+// app.get("/", f)
+
+
+app.get("/", (req, res) => {
 
   console.log(req.headers)
- 
-// sample -> 5ieJqeLJjjI8iJWaxeBLuK
   let playlist = req.params.playlist
   console.log("FETCHING MEDIA DATA")
 
-spotify.searchPlaylists(playlist)
-  .then(function(data) {
-      console.log("RETURNING MEDIA DATA")
-      res.json(data)
-  }, function(err) {
-    console.log('Something went wrong!', err);
-  });
+  spotify.searchPlaylists(playlist)
+    .then(function(data) {
+        console.log("RETURNING MEDIA DATA")
+        res.json(data)
+    }, function(err) {
+      console.log('Something went wrong!', err);
+    });
 
 })
-
 
 
 app.listen(PORT, function() {
